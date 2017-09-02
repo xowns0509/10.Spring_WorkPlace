@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd">
+
+	<!-- 모델단 -->
+	<!-- <bean class="trans.scan.dao.CustomerDao" /> -->
+	<!-- <bean class="trans.scan.dao.MemberDao" /> -->
+
+	<!-- 서비스단 -->
+	<!-- <bean class="trans.scan.service.ServiceTxImpl" /> -->
+
+	<!-- 컨트롤러 단 -->
+	<!-- <bean class="trans.scan.controller.TxController"/> -->
+
+	<!-- 이렇게 적어도 위의 4개는 설정해 줘야... 하지만 -->
+
+
+	<!-- context로 생성 -->
+	<!-- 컨트롤러는 @Controller로 되니까. -->
+	<!-- <context:component-scan base-package="trans.scan.controller"/> -->
+
+	<!-- 그냥 컨트롤러 뿐만 아니라 scan 아래 모든 클래스들을 통째로 bean 하고싶다면 -->
+	<!-- 컨트롤러, 멤버다오, 커스터머다오, 서비스까지 -->
+	<context:component-scan base-package="trans.scan" />
+	<!-- trans.scan.해서 Error creating bean with name 'txController': Injection 
+		of autowired dependencies failed 하고 안됬었음 -->
+
+	<!-- ViewResolver(경로 및 확장자 단축해주는 거) 설정(등록) -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="suffix" value=".jsp" /> <!-- setSuffix() 호출 -->
+		<property name="prefix" value="/WEB-INF/view/" />
+	</bean>
+
+
+
+
+
+	<!-- JNDI 설정 -->
+	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="java:comp/env/jdbc/myora" />
+		<!-- context.xml Resource name="jdbc/myora을 갖고와 -->
+	</bean>
+
+	<!-- Mybatis 설정 -->
+	<bean id="factoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<!-- JNDI의 설정에서 dataSource 는 bean이였으니까 ref -->
+		<property name="configLocation" value="classpath:mybatis/config/config.xml" />
+		<property name="mapperLocations" value="classpath*:mybatis/mapper/*.xml" />
+		<!-- *표는 여러개 -->
+
+	</bean>
+
+	<!-- -->
+	<bean id="ss" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="factoryBean" /><!-- Mybatis 설정의 factoryBean을 
+			여기다 연결 -->
+
+	</bean>
+
+	<!-- 트랜젝션 설정 -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+
+	</bean>
+	
+	<!-- namespace에서 tx 체크 후 -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+
+
+</beans>

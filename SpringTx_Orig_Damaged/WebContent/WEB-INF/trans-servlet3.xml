@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:context="http://www.springframework.org/schema/context"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+      http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+
+
+<!-- ############################### -->
+<!-- Controller, Service, Dao 빈 생성 -->
+<context:component-scan base-package="trans.scan" />
+
+<!-- ViewResolver 설정 -->
+<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+   <property name="suffix" value=".jsp"/> <!-- setSuffix() 호출 -->
+   <property name="prefix" value="/WEB-INF/view/" />
+</bean>
+
+<!-- JNDI 설정 -->
+<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+   <property name="jndiName" value="java:comp/env/jdbc/myora"/>
+</bean>
+
+<!-- Mybatis 설정 -->
+<bean id="factoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+   <property name="dataSource" ref="dataSource"/>
+   <property name="configLocation" value="classpath:mybatis/config/config.xml"/>
+   <property name="mapperLocations" value="classpath*:mybatis/mapper/*.xml"/>
+</bean>
+
+<bean id="ss" class="org.mybatis.spring.SqlSessionTemplate">
+   <constructor-arg ref="factoryBean"/>
+</bean>
+
+</beans>

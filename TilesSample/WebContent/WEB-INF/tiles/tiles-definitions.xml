@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+	<definition name="defaultTemplate" template="/WEB-INF/template/default/template.jsp">
+		<put-attribute name="header" value="/WEB-INF/template/default/header.jsp" /><!-- 속성 넣기 -->
+		<put-attribute name="manu" value="/WEB-INF/template/default/manu.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/template/default/footer.jsp" />
+	</definition>
+
+	<definition name="*" extends="defaultTemplate">
+		<put-attribute name="title" value="우리사이트" />
+		<put-attribute name="body" value="/WEB-INF/view/{1}.jsp"/>
+	</definition>
+
+
+</tiles-definitions>

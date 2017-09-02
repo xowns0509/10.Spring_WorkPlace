@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"></bean>
+
+	<bean id="message" class="annotation1.required.MessageBeanImpl">
+		<property name="name" value="홍자"></property>
+		<!-- 위에가 주석이 달렸어. 원래 setName()호출되어야 하는 데. 필수 입력사항으로 만들고 싶다면? Impl로 이동 -->
+		<property name="message">
+			<value>불금 자리변경</value>
+		</property>
+
+	</bean>
+
+</beans>

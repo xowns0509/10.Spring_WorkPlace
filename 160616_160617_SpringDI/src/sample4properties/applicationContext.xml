@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- properties 파일을 읽기 -->
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations"><!-- 하나인 경우 location에다 value=""로 속성 지정, 지금은 값이 
+				여러개라 locations에다 array로. -->
+			<array>
+				<value>classpath:sample4properties/member.properties
+				</value>
+			</array>
+		</property> <!-- setter 호출 setLocation() -->
+
+	</bean>
+
+	<!-- ${member.age}써도되고 그냥 ${age라 써도 됨.} -->
+	<bean id="member" class="sample4properties.MemberBean">
+		<constructor-arg value="${member.name}" />
+		<constructor-arg value="${member.age}" type="int" />
+		<constructor-arg value="${member.message}" />
+
+	</bean>
+
+	<bean id="dao1" class="sample4properties.MemberDAO">
+		<property name="member" ref="member" />
+	</bean>
+
+</beans>

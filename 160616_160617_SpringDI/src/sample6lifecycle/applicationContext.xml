@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="bean" class="sample6lifecycle.MessageBeanImpl" init-method="init">
+		<property name="greeting"><!-- greeting이란 함수가 있으므로 set, get뺀 greeting으로 가능 -->
+			<value>안녕하시어?></value>
+		</property>
+
+	</bean>
+	
+	<bean class="sample6lifecycle.BeanPostProcessorImpl"/>
+	<!-- 이거 따로 MainApp에다 기술안해도 자동으로 불려짐. -->
+	
+<!-- 	메모리에 greeting이 올라가있어 -->
+<!-- 	그 메모리에 시작번지가 있겠지 -->
+	
+<!-- 	bean이란 변수를 만든 다음 -->
+<!-- 	그 변수가 메모리의 시작번지를 가리키고 있겠지. -->
+	
+<!-- 	메모리에 sample6lifecycle.MessageBeanImpl... -->
+
+<!-- 생성자도 있지만 init함수 같은 것들. 그걸 지정 가능. init-method를 통해. -->
+<!-- sample6lifecycle.MessageBeanImpl -->
+<!-- 프로퍼티는 값만 지정하겠지만, -->
+<!-- 이닛 함수로는 코딩이 가능하잖아. -->
+<!-- 예를 들면 DB에 연결하는 것 같은. -->
+
+
+</beans>

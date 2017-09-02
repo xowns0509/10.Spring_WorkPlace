@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+	<!-- @Required를 위한 -->
+	<bean
+		class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"></bean>
+	<!-- @Autowired를 위한 -->
+	<bean
+		class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"></bean>
+
+	<!-- 여태까진 스프링관련 어노테이션이었는 데 -->
+	<!-- @Resource는 자바관련 어노테이션. 경로가 살짝 다름. -->
+	<bean
+		class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"></bean>
+
+	<!-- 끝으로 위처럼 하나하나씩 써도 되지만... 네임스페이스에서 context체크 후 아래와 같이 기술 -->
+	<context:annotation-config />
+
+	<!-- id 쓸 필요가 없어. 사용은 안하니까. -->
+	<bean id="message" class="annotation3.resource.MessageBeanImpl">
+		<property name="name" value="홍자파워"></property>
+		<!-- 위에가 주석이 달렸어. 원래 setName()호출되어야 하는 데. 필수 입력사항으로 만들고 싶다면? Impl로 이동 -->
+		<property name="message">
+			<value>불금 자리변경</value>
+		</property>
+		<!-- <property name="outputer" ref="outputer"></property> 원래 이게 있어야 한다고. 
+			@Autowired 없으면. -->
+
+	</bean>
+
+	<bean id="outputer" class="annotation3.resource.OutputerImpl">
+		<property name="path" value="src\\annotation3\\resource\\save.txt"></property>
+
+	</bean>
+	<bean id="outputer2" class="annotation3.resource.OutputerImpl">
+		<property name="path" value="src\\annotation3\\resource\\message.txt"></property>
+
+	</bean>
+	<!-- @Autowired로 자동으로 연결하기.... 로 했지만, annotation2.autowired.OutputerImpl가 
+		2가지로 생겼어. -->
+	<!-- 그러면 에러 발생. 둘 중 하나를 명확하게 지정해 줘야 한다. 그것이 @Qualifier -->
+</beans>

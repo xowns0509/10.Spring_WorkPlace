@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>02_requestMapping</title>
+</head>
+<body>
+	<h1>폼의 입력값 get전송</h1>
+	<form action="re/request.do" method="get">
+
+		아이디:<input type="text" name="id" /><br />
+		이름:<input type="text" name="name" /><br />
+		나이:<input type="text" name="age" /><br />
+		<input type="submit" value="전송" /><br />
+			
+	</form>
+
+	<h1>폼의 입력값 post전송</h1>
+	
+	<form action="re/request.do" method="post">
+
+		아이디:<input type="text" name="id" /><br />
+		이름:<input type="text" name="name" /><br />
+		나이:<input type="text" name="age" /><br />
+		<input type="submit" value="전송" /><br />
+			
+	</form>
+	<br />
+	<a href="re/a.do">1. re/a.do 요청</a>
+	<br />
+	<a href="re/b.do">2. re/b.do 요청</a>
+	<br />
+	<a href="re/c.do">3. re/c.do 요청</a>
+	<br />
+	<a href="re/c.do?id=kim">4. re/c.do?id=kim 요청</a>
+
+	<!-- 	이 요청을 받아줄 파라미터들이 필요하겠지 -->
+
+</body>
+</html>

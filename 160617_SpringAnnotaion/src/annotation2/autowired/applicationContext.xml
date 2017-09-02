@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- @Required를 위한 -->
+	<bean
+		class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"></bean>
+	<!-- @Autowired를 위한 -->
+	<bean
+		class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"></bean>
+
+	<!-- id 쓸 필요가 없어. 사용은 안하니까. -->
+	<bean id="message" class="annotation2.autowired.MessageBeanImpl">
+		<property name="name" value="홍자파워"></property>
+		<!-- 위에가 주석이 달렸어. 원래 setName()호출되어야 하는 데. 필수 입력사항으로 만들고 싶다면? Impl로 이동 -->
+		<property name="message">
+			<value>불금 자리변경</value>
+		</property>
+		<!-- <property name="outputer" ref="outputer"></property> 원래 이게 있어야 한다고. 
+			@Autowired 없으면. -->
+
+	</bean>
+
+	<bean id="outputer" class="annotation2.autowired.OutputerImpl">
+		<property name="path" value="src\\annotation2\\autowired\\save.txt"></property>
+
+	</bean>
+	<bean id="outputer2" class="annotation2.autowired.OutputerImpl">
+		<property name="path" value="src\\annotation2\\autowired\\message.txt"></property>
+
+	</bean>
+	<!-- @Autowired로 자동으로 연결하기.... 로 했지만, annotation2.autowired.OutputerImpl가 
+		2가지로 생겼어. -->
+	<!-- 그러면 에러 발생. 둘 중 하나를 명확하게 지정해 줘야 한다. 그것이 @Qualifier -->
+</beans>

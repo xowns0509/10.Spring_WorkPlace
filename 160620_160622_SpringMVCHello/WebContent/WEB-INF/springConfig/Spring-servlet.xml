@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd">
+
+	<!-- WEB-INF \ springConfig \ Spring-servlet.xml -->
+
+	<!-- SpringMVCHello-servlet로 반드시 프로젝트명과 맞춰줘야 함. -->
+	<!-- Controller view 생성 -->
+	<bean class="springMVC.sample.HelloController"/>
+
+	<!-- Controller 빈 생성 -->
+	<context:component-scan base-package="example.member.controller" />
+	<!-- example.member.controller 패키지 내 모든 클래스파일이 자동으로 bean으로 올라옴 -->
+
+	<!-- Model 빈 생성 -->
+	<bean id="memVo" class="example.member.dto.MemberVO">
+
+		<constructor-arg value="0111" />
+		<constructor-arg value="홍길동" />
+		<constructor-arg value='23' />
+
+	</bean>
+	<!-- DB에서 가져올테니, 이런 건 앞으로 없겠지 -->
+
+<!-- 	<bean class="example.member.controller.AutoScanController"> -->
+		<!-- 1. 생성자 주입 시 -->
+		<!-- <constructor-arg ref='memVo'/> -->
+
+		<!-- 2. setter로 주입 시 -->
+		<!-- <property name="memberVO" ref="memVo" /> -->
+		<!-- name="memberVO"에 의해 AutoScanController의 setMemberVO()가 실행됨. -->
+<!-- 	</bean> -->
+
+<!-- 	<bean class="example.member.controller.RequestMappingController" /> -->
+<!-- 	<bean class="example.member.controller.RequestMappingController2" /> -->
+
+	<!-- namespace의 context 체크 후 -->
+	<!-- 3. 어노테이션 자동 bean 생성. @Autowired나 @Resource(name="memVo")사용 시 -->
+	<context:annotation-config />
+
+
+	<!-- 이번엔 VO객체를 이용해 값 지정 -->
+	<!-- 기본형은 value였고, 참조형은 reference(ref) -->
+
+
+</beans>

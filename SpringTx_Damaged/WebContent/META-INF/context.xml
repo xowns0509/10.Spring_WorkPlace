@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+<!-- jdbc/myora은 마음대로 설정해도 됨. -->
+<Resource name="jdbc/myora" 
+	auth="Container" 
+	type="javax.sql.DataSource"
+	driverClassName="oracle.jdbc.driver.OracleDriver" 
+	url="jdbc:oracle:thin:@localhost:1521/orcl"
+	username="scott" 
+	password="tiger" 
+	maxActive="20" 
+	maxIdle="10"
+	maxWait="-1" />
+</Context>

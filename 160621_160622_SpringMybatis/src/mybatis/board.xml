@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="board">
+
+	<!-- memberVO 변수명을 SqlMapConfig.xml에서 typeAlias 에서 지정한 하였음 -->
+	<select id="boardCheck" parameterType="boardVO" resultType="memberVO">
+		select * from membertemp where userid=#{userId}
+		<if test="userPass !=null">
+			AND userPass=#{userPass}
+		</if>
+	</select>
+
+	<!-- boardInsert sql -->
+	<insert id="boardInsert" parameterType="boardVO"> <!-- insert,delete,update는 리턴타입 필요없음 -->
+		INSERT INTO upLoadtemp(B_ID, B_NAME, B_EMAIL, B_TITLE, B_CONTENT,
+		B_PWD, B_DATE, B_IP, B_FNAME, B_FSIZE)
+		VALUES(uploadtemp_bid_seq.nextval, #{b_name}, #{b_email}, #{b_title},
+		#{b_content}, #{b_pwd}, #{b_date}, #{b_ip}, #{b_fname}, #{b_fsize})
+
+	</insert>
+
+	<!-- boardList -->
+	<select id="boardList" resultMap="HireMap" parameterType="string">
+		select * from HIRE where HIRE_JOB = #{hireJob}
+	</select>
+
+	<!-- boardOne -->
+	<select id="boardListOne" resultType="hire" parameterType="int">
+		select *
+		from HIRE where HIRE_NUM = #{hireNum}
+	</select>
+
+	<!-- userId 같은 이름들은 parameterClass의 클래스 필드 명 -->
+</mapper>

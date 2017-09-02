@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- intList는 인덱스는 아니고 그냥 숫자들이 들어간 콜렉션 -->
+	<!-- member vo객체를 넣어줌 -->
+	<bean id="bean" class="sample5collection.ListBean">
+		<!-- set메소드가 호출되길 원해 -->
+		<property name="intList"><!-- setIntList 호출 -->
+			<list><!-- 2개 이상이 묶였으니까 list로 들어가야지. -->
+				<value>22</value>
+				<value>33</value>
+			</list>
+		</property>
+
+
+		<property name="memberList"><!-- memberList 어짜피 private이야. 불러온다는 개념은 아니야. 단, 
+				우리는 그것을 헷갈리지 않게 하기 위해 이름을 매칭시키는 것일 뿐이고 -->
+			<list>
+				<ref bean="m1" /><!-- 어떤 bean인가. -->
+				<ref bean="m2" />
+				<ref bean="m3" />
+				<!-- m1 ~ m3는 메인함수에서도 안 불리는 놈인데 굳이 이름을 쓸 필요가 있을까. -->
+				<!-- 그래서 무명bean 사용. -->
+				<bean class="sample5collection.MemberBean" p:name="22" p:age="33" p:message="불금"/>
+			</list>
+		</property>
+	</bean>
+
+	<!-- 1. 생성자를 지정하여 값지정. -->
+	<bean id="m1" class="sample5collection.MemberBean"></bean>
+
+	<!-- 2. setter이용하여 값지정. -->
+	<bean id="m2" class="sample5collection.MemberBean"></bean>
+
+	<!-- 3. p태그 이용하여 값지정 -->
+	<bean id="m3" class="sample5collection.MemberBean" p:name="홍길숙"
+		p:age='33' p:message="맛점하던가"></bean>
+
+
+
+</beans>

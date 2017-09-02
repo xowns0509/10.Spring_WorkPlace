@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 객체를 생성하라는 게 beans -->
+	<!-- 각각의 메모리에 뜬 객체 beans를 누가 관리해? 스프링이 -->
+
+	<!-- 또한 객체 생성시 여기다 값 초기화도 가능 -->
+	<!-- 생성자 인자로 지정 or setter이용 -->
+	
+	<!-- value를 속성으로 줘도 되고 자식태그로 줘도 됨 -->
+	<!-- 숫자역시 기본으로 문자로 들어가기에 type='int'로 -->
+	<!-- 그렇다고 '홍길국' 옆에다 type='int'로 설정하면 에러남 -->
+
+	<bean id="member" class="sample2value.MemberBean">
+		<constructor-arg value='홍길국'></constructor-arg>
+		<constructor-arg value='23' type='int'></constructor-arg>
+		<constructor-arg>
+			<value>안녕하세요</value>
+		</constructor-arg>
+	</bean>
+
+	<!-- 이번엔 setter를 이용해서 값 지정 -->
+	<bean id="member2" class="sample2value.MemberBean">
+		<property name="name" value="멤버투"></property>
+		<property name="age">
+			<value type='int'>98</value>
+		</property>
+		<property name="message" value="뭔줄알고"></property>
+	</bean>
+
+	<!-- 이번엔 VO객체를 이용해 값 지정 -->
+	<!-- 기본형은 value였고, 참조형은 reference(ref) -->
+	<bean id="dao1" class="sample2value.MemberDAO">
+		<constructor-arg ref='member'></constructor-arg>
+	</bean>
+
+	<!-- DAO클래스의 setter를 이용, member2의 객체 지정하고 main()함수에서 insert()호출 -->
+	<bean id="dao2" class="sample2value.MemberDAO">
+		<constructor-arg ref='member2'></constructor-arg>
+	</bean>
+</beans>

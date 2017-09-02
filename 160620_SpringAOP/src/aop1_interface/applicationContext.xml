@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 1. target bean 생성 -->
+	<bean id="targetBean" class="aop1_interface.MessageBeanImpl"></bean>
+
+	<!-- 2. advice bean 생성 -->
+	<!-- id는 반드시 소문자로 시작 -->
+	<bean id="logginAdvice" class="aop1_interface.LogginAdvice"></bean>
+
+
+	<!-- 3. advice 연결 -->
+
+	<!-- org.springframework.aop.support.DefaultPointcutAdvisor를 메모리에 올리고 -->
+	<!-- set함수를 -->
+	<!-- 올렸는데 -->
+	<!-- 또하나의 객체가 필요한거임 그게 jdk -->
+	<!-- 근데 jdk하려니 인자가 필요하데 그게 pattern -->
+
+	<bean id="advisor" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+		<property name="pointcut"><!-- 이거에 의해 setPointcut()이 호출되 -->
+			<bean class="org.springframework.aop.support.JdkRegexpMethodPointcut"><!-- 이 안에 또하나의 bean태그 열어줌으로서 객체 하나 넣기 -->
+				<property name="pattern" value=".*Hello*" /><!-- value에 담긴 값은 
+					정규화. hello 들어간 놈만 하겠다. 뭘? -->
+
+			</bean>
+
+
+		</property>
+		<property name="advice" ref="logginAdvice" /><!-- 객체니까 ref해야지 -->
+	</bean>
+
+	<!-- 만든 어드바이서들을 타겟과 연결해주는 거 -->
+	<!-- 4. 프록시 기반 AOP 적용(Weaving) -->
+	<bean id="proxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+
+		<property name="target" ref="targetBean" /><!-- 이것이 바로 타겟지정 -->
+		<property name="interceptorNames"><!-- 이건 advisor 지정 -->
+
+			<list>
+				<value>advisor</value>
+			</list>
+		</property>
+	</bean>
+</beans>

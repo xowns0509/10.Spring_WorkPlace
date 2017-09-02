@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>brunch</title>
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="title" content="brunch">
+<meta name="referrer" content="always">
+<meta property="og:site_name" content="brunch">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:app:name:iphone" content="brunch">
+<meta name="twitter:app:id:iphone" content="1001388574">
+<meta name="twitter:app:url:iphone" content="brunchapp://open">
+<meta property="al:ios:app_name" content="brunch">
+<meta property="al:ios:app_store_id" content="1001388574">
+<meta property="al:ios:url" content="brunchapp://open">
+<meta property="fb:app_id" content="313683402170826">
+<link rel="SHORTCUT ICON" href="//t1.daumcdn.net/brunch/static/icon/favicon/favicon64_150520.ico"/>
+<link rel="apple-touch-icon-precomposed" sizes="180x180" href="//t1.daumcdn.net/brunch/static/icon/ios/icon152.png">
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="//t1.daumcdn.net/brunch/static/icon/ios/icon152.png">
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="//t1.daumcdn.net/brunch/static/icon/ios/icon120.png">
+<!--[if lt IE 9]>
+    <script src="//t1.daumcdn.net/brunch/static/libraries/js/jquery.min-1.11.3.js"></script>
+<![endif]-->
+<!--[if gte IE 9]><!-->
+<script type="text/javascript" src="//t1.daumcdn.net/brunch/static/libraries/js/jquery.min-2.1.1.js"></script>
+<!--<![endif]-->
+<script type="text/javascript" src="//t1.daumcdn.net/brunch/static/libraries/js/jquery.cookie.min-1.4.1.js"></script>
+<script type="text/javascript" src="//t1.daumcdn.net/brunch/static/libraries/js/jquery.xdomainrequest.min.js"></script>
+<script type="text/javascript" src="//t1.daumcdn.net/brunch/static/libraries/js/handlebars.runtime.min-v3.0.0.js"></script>
+<script type="text/javascript" src="//t1.daumcdn.net/brunch/static/libraries/js/userAgent.min-1.0.14.js"></script>
+<script type="text/javascript">
+	/**
+	 * Tiara 내부에서 사용 하는 Message Queue 정의
+	 **/
+	var _tiq = 'undefined' !== typeof _tiq ? _tiq : []; // Global Variables
+	var __TiaraObj = __TiaraObj || {};
+	if ('undefined' === typeof __TiaraObj.startTime) {
+		__TiaraObj.startTime = new Date();
+	}
+	window._tiq = _tiq;
+</script>
+
+<link rel="stylesheet" type="text/css" href="//t1.daumcdn.net/brunch/static/real/201606231017/css/B.css"/>
+
+	    <link rel="stylesheet" type="text/css" href="//t1.daumcdn.net/brunch/static/real/201606231017/product/B.Message.min.css"/>
+	
+			<link rel="stylesheet" type="text/css" href="/static/css/B.font.css"/>
+	
+	<link rel="stylesheet" href="//t1.daumcdn.net/brunch/static/real/201606231017/css/B.css">
+	<link rel="stylesheet" href="//t1.daumcdn.net/brunch/static/real/201606231017/css/B.Article.css">
+	<link rel="stylesheet" href="//t1.daumcdn.net/brunch/static/real/201606231017/css/B.PublishSideMenu.css">
+	<link rel="stylesheet" href="//t1.daumcdn.net/brunch/static/real/201606231017/product/brunch-editor.min.css">
+	<script type="text/javascript" src="//t1.daumcdn.net/brunch/static/libraries/js/jquery-ui.min-1.11.4.js"></script>
+	<script type="text/javascript" src="//t1.daumcdn.net/brunch/static/libraries/js/load-image.all.min-1.0.js"></script>
+	<script type="text/javascript" src="//t1.daumcdn.net/brunch/static/real/201606231017/product/brunch-editor.min.js"></script>
+</head>
+<body>
+			<div class="service_header write #edit_toolbar">
+	<div class="wrap_inner  ">
+		<div class="f_l">
+								<button id="btnServiceMenu" type="button" class="f_l text_hide btn_menu img_ico #sidebar">메뉴</button>
+			
+					
+		            <span class="wrap_btn_write">
+                <button class="be_header_button_preview #preview">모바일 미리보기</button>
+                <button class="be_header_button_spell #spell">맞춤법 검사</button>
+			</span>
+		
+		</div>
+														        		                		        																						
+        <div class="f_r">
+					<div class="wrap_btn_write wrap_btn_write_right">
+				<span class="wrap_btn_article_save">
+					<span class="noti"></span>
+								<button class="btn_write be_header_button_save article_save_draft btn_article_save_draft #save">저장</button>
+											<a href="/apply" target="_blank"><button type="button" class="btn_request">작가신청</button></a>
+							</div>
+				</div>
+			</div>
+</div>
+		<div id="wrapSideMenu">
+	<main>
+		<button type="button" id="btnCloseSideMenu" class="btn_close_side_menu img_side_menu ico_close f_r text_hide">닫기</button>
+					<div class="wrap_side_profile">
+				<a href="/@@26k4" class="#side_my brunchHomeLink">
+					<div class="wrap_profile_image">
+						<img class="img_profile" src="//i1.daumcdn.net/thumb/C60x60/?fname=http://t1.daumcdn.net/brunch/service/guest/image/SWx4zK3ysHCX2I60O5yo0_a2ka0" alt="프로필이미지">
+					</div>
+					<div class="wrap_profile_info">
+						<strong class="text_profile_name">엄태준</strong>
+						<p class="text_profile_id">brunch.co.kr/@xowns0509</p>
+					</div>
+				</a>
+				<a href="/write" class="#side_write"><button class="btn_write">글쓰기</button></a>
+							<a href="/apply" class="#side_request btn_apply_author" target="_blank"><button class="btn_request">작가신청</button></a>
+			
+
+            <a class="wrap_side_ico ico_side_likeit text_hide brunchLikeLink #side_likeit" href="/likeit">좋아요</a>
+            <a class="wrap_side_ico ico_side_history text_hide #side_history" href="/me/history">알림</a>
+            <span class="img_side_menu ico_alim_new">NEW</span>
+
+					</div>
+				<div class="wrap_side_service_menu logout">
+					<ul>
+									<li>
+						<a class="menu_word4 #side_home brunchHomeLink" href="/@@26k4">내 브런치</a>
+					</li>
+					<li>
+						<a class="menu_word5 #side_ready" href="/ready">작가의 서랍</a>
+					</li>
+										<li>
+						<a class="menu_word2 #side_stats" href="/@xowns0509/stats">통계</a>
+					</li>
+										<li class="hr"></li>
+					<li>
+						<a class="menu_word4 #side_brunch" href="/">브런치 홈</a>
+					</li>
+					<li>
+							<a class="menu_word5 #side_now brunchNowLink" href="/now">브런치 나우</a>
+					</li>
+					<li>
+						<a class="menu_word2 #side_feed brunchFeedLink" href="/feed">피드</a>
+					</li>
+					<li >
+						<a class="menu_word3 #side_mag" href="/magazine">매거진</a>
+					</li>
+							</ul>
+							<div class="wrap_side_setting">
+					<a href="/me/settings" class="#side_settings"><button type="button">설정</button></a>
+					<a id="sideMenuLogoutButton" href="/signout"><button type="button">로그아웃</button></a>
+				</div>
+					</div>
+	</main>
+</div>
+
+	
+<input id="profileIdInput" type="hidden" value="xowns0509"/>
+<input id="userIdInput" type="hidden" value="26k4"/>
+	
+<div class="beditor">
+	<div class="wrap_editable">
+					<div class="wrap_cover">
+				<div class="cover_item cover_text"
+						 data-app="{&quot;type&quot;:&quot;cover&quot;,&quot;kind&quot;:&quot;cover_text&quot;,&quot;align&quot;:&quot;left&quot;,&quot;title&quot;:{&quot;text&quot;:&quot;&quot;},&quot;title-sub&quot;:{&quot;text&quot;:&quot;&quot;},&quot;style&quot;:{&quot;background-color&quot;:&quot;#3AB5C3&quot;},&quot;plain&quot;:{&quot;title&quot;:&quot;&quot;,&quot;title-sub&quot;:&quot;&quot;}}">
+					<div class="cover_image"></div>
+					<div class="cover_inner"></div>
+					<div class="cover_cell cover_direction_left">
+						<h1 class="cover_title"></h1>
+
+						<p class="cover_sub_title"></p>
+					</div>
+				</div>
+			</div>
+			<div class="wrap_body text_align_left">
+				<p class="wrap_item item_type_text"><br></p>
+			</div>
+			</div>
+</div>
+	<input id="userStatusInput" type="hidden" value="verify"/>
+<input id="articleKeywordsInput" type="hidden" value="null"/>
+<input id="articleStatusInput" type="hidden" value="new"/>
+<input id="articleMagazineNoInput" type="hidden" value=""/>
+<div id="layerDimEditorForPublishSideMenu"></div>
+<div id="wrapPublishSideMenu">
+	<div id="wrapBtnSidePublish" class="wrap_inner_publish wrap_save_btn">
+		<button class="cancel button" type="button">취소</button>
+		<button class="save button mint" type="button">완료</button>
+	</div>
+
+	<div class="wrap_publish_magazine wrap_inner_publish">
+		<div class="wrap_label_magazine"><h3 class="label_magazine_selection">매거진 선택</h3></div>
+		<div id="wrapPublishMagazineList" class="wrap_publish_magazine_list"></div>
+	</div>
+
+	<div class="wrap_publish_keyword wrap_inner_publish">
+		<span class="label_keyword_select">키워드 선택<span id="guideKeywordLayer"></span></span>
+		<span class="wrap_keyword_count">
+			<span id="wrapCountSelectedKeyword" class="wrap_count_selected_keyword">0</span>
+			<span class="wrap_count_keyword_slash">/</span>
+			<span class="wrap_count_keyword_total">3</span>
+		</span>
+		<button id="btnKeywordSearch" class="ico_publish_keyword" type="button">검색</button>
+		<div id="wrapKeywordSearchSlide">
+			<div class="wrap_inner_publish">
+				<span id="wrapInputKeywordSearch">
+					<span class="ico_publish_keyword ico_search_input"></span>
+					<input id="inputKeywordSearch" placeholder="키워드를 입력해 주세요" type="text"/>
+				</span>
+				<span id="btnKeywordSearchClose" class="ico_publish_keyword ico_search_close"></span>
+				<div class="wrap_keyword_search_list" id="wrapKeywordSearchList"></div>
+			</div>
+		</div>
+		<div class="wrap_keyword_selected" id="wrapKeywordSelected"></div>
+	</div>
+</div>	<script type="text/javascript" src="/static/libraries/js/tico-0.2.js"></script>
+<script type="text/javascript" src="//t1.daumcdn.net/brunch/static/real/201606231017/js/B.js"></script>
+
+<script type="text/javascript" src="//t1.daumcdn.net/brunch/static/real/201606231017/product/B.Message.min.js"></script>
+
+<script type="text/javascript">
+    B.Config = {"templateUrl":"/template/","apiUrl":"https://api.brunch.co.kr","active":"real","serviceDomain":"brunch.co.kr","servicecode":"7eF1DYRbLy8LCLcy","serviceUrl":"https://brunch.co.kr"};
+	B.UserAgent = {
+		platform: "pc"
+	};
+	B.User = {
+			userId: '26k4',
+		userName: '엄태준',
+		userImage: 'http://t1.daumcdn.net/brunch/service/guest/image/SWx4zK3ysHCX2I60O5yo0_a2ka0',
+		profileId: 'xowns0509',
+        emailValidation: 'true',
+        publishCount: '0',
+		hasPublishAuthority: false
+		};
+
+	Tico.getInstance().start({
+		"SERVICE_CODE": "brunch",
+		"DEBUG_MODE": B.isDebug()
+	});
+</script>
+
+<script type="text/javascript" src="//t1.daumcdn.net/brunch/static/real/201606231017/js/B.Util.js"></script>
+
+<div class="compatible-info">
+	<em class="text_noti">브런치는 <a target="_blank" href="http://www.google.co.kr/chrome/">크롬 브라우저</a>에 최적화 되어있습니다.</em>
+</div>
+
+<script type="text/javascript">
+    try {
+							if(jQuery.userAgent.browser.name != 'chrome') {
+					jQuery('body').addClass('no-compatible');
+				}
+			    } catch(e) {
+    }
+</script>
+
+<script type="text/javascript">
+	jQuery('.wrap_btn_write_right .btn_request').on('click', function (e) {
+		e.preventDefault();
+	});
+
+	jQuery('.wrap_editable').editable(
+		{
+			apiDomain: B.Config.apiUrl + '/v1',
+			buttons: ['fontFamily', 'formatBlock', 'bold', 'underline', 'strikeThrough', 'foreColor', 'backColor', 'titleColor', 'blockquote', 'bullet', 'createLink'],
+			coverButtons: ['insertCoverImage', 'insertCoverColor', 'changeCoverAlign', 'changeCoverType', 'deleteCoverImage'],
+			sideButtons: ['insertImage', 'insertGridGallery', 'insertVideo', 'uploadFiles', 'insertPlace', 'insertSticker', 'insertLine', 'changeAlign'],
+
+			brunch: {
+				userId: (window.B && B.User ? B.User.userId : ""),
+								active: (window.B && B.Config ? B.Config.active : "dev"),
+				publishCount: (window.B && B.User ? B.User.publishCount : "0")
+			},
+
+			directFunction: {
+				".article_save_publish": {
+					"direct": "save",
+					"callback": function () {
+						// 여기에 우선 저장로직 넣기
+						jQuery.proxy(B.Editor.clickPublishButton, B.Editor, arguments[0], 'publish', jQuery('.be_header_button_publish'), arguments[1])();
+						console.log("save_publish", arguments);
+					}
+				},
+				".article_save_draft": {
+					"direct": "saveDraft",
+					"callback": function (e, a, b, c) {
+						// 여기에 우선 저장로직 넣기
+						jQuery.proxy(B.Editor.writePost, B.Editor, arguments[0], 'draft', jQuery('.be_header_button_save'), arguments[1])();
+						console.log("save_draft", arguments);
+					}
+				},
+				".btn_request": {	//작가 신청
+					"direct": "saveDraft",
+					"callback": function () {
+						var args = arguments;
+						B.getUser(function(user){
+                            if(user && user.emailValidation == false){
+                                B.Message.showMessage('#error:needEmailValidation');
+                                return false;
+                            }
+                            var redirectUrl = '/apply';
+
+                            var lastPath = document.referrer.split('/').pop();
+
+                            if (lastPath.match(/makebook(\?.+)?/)) {
+                                redirectUrl = '/' + lastPath;
+                            }
+                            jQuery.proxy(B.Editor.writePost, B.Editor, args[0], 'draft', jQuery('.be_header_button_save'), args[1], redirectUrl)();
+
+						});
+					}
+				},
+				".article_save_private": {
+					"direct": "save",
+					"callback": function (e, a, b, c) {
+						// 여기에 우선 저장로직 넣기
+						jQuery.proxy(B.Editor.writePost, B.Editor, arguments[0], 'private', jQuery('.be_header_button_save'), arguments[1])();
+						console.log("save_private", arguments);
+					}
+				},
+				".be_header_button_preview": {
+					"direct": "preview",
+					"callback": function (content) {
+						// 모바일 미리보기입니다.
+					}
+				},
+				".be_header_button_spell": {
+					"direct": "spell",
+					"callback": function (content) {
+						// 맞춤법 검사입니다.
+					}
+				}
+			},
+			checkUndoRedo: function (currentIndex) {
+				if (currentIndex > 1) {
+					jQuery.proxy(B.Editor.resetSaveButton, B.Editor)();
+					jQuery.proxy(B.Editor.setTimerForSaveTempArticle, B.Editor)();
+				}
+			}
+		}
+	);
+		</script>
+
+<script type="text/javascript" src="//t1.daumcdn.net/brunch/static/real/201606231017/product/B.Editor.Magazine.Template.js"></script>
+<script type="text/javascript" src="//t1.daumcdn.net/brunch/static/real/201606231017/js/B.PublishSideMenu.js"></script>
+<script type="text/javascript" src="//t1.daumcdn.net/brunch/static/real/201606231017/js/B.Editor.js"></script>
+
+<script type="text/javascript">
+	try {
+		if (jQuery.userAgent.browser.name == 'msie' && parseInt(jQuery.userAgent.browser.version.major) < 10) {
+			alert("익스플로러 9이하 브라우저에서는 글쓰기를 지원하지 않습니다.\n브런치 글쓰기가 최적화되어있는 [크롬 브라우저]를 이용해주세요.");
+			window.history.back();
+		}
+	} catch (e) {
+	}
+</script>
+	
+<script type="text/javascript">
+	//티아라 스크립트
+		_tiq.push(['__setSection', 'editor']);
+			_tiq.push(['__setPageName', 'editor_write']);
+		_tiq.push(['__setParam', 'svcdomain', 'brunch.co.kr']);
+	_tiq.push(['__setParam', 'puid', 1466943507285]); // 서버 시간 (Unix Timestamp ms)입니다.
+	_tiq.push(['__setConfig', {
+		enableButton:true,
+		enableScroll:true
+	}]);
+	_tiq.push(['__clickOn']);
+	_tiq.push(['__trackPageview']);
+	(function(d) {
+		var se = d.createElement('script'); se.type = 'text/javascript'; se.async = true;
+		se.src = location.protocol + '//m2.daumcdn.net/tiara/js/td.min.js';
+		var s = d.getElementsByTagName('head')[0]; s.appendChild(se);
+	})(document);
+
+	</script>
+</body>
+</html>

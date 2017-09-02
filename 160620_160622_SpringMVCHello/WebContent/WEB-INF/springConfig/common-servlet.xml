@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 공통적인 스프링 설정 xml파일 -->
+	<!-- ViewResolver 등록하기 -->
+
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="suffix" value=".jsp" /> <!-- setSuffix() 호출 -->
+		<property name="prefix" value="/WEB-INF/view/" />
+	</bean>
+	
+	<!-- 이 설정파일을 탐켓이 인식하도록 하게 하기 위해, spring-servlet.xml의 param-value에다가 경로 기재-->
+	
+</beans>

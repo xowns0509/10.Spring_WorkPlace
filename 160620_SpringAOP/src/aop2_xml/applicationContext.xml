@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
+
+	<!-- target Bean 생성 -->
+	<bean id="targetBean" class="aop2_xml.MessageBeanImpl">
+	</bean>
+
+	<!-- advice bean 생성 -->
+	<bean id="advice" class="aop2_xml.LogginAdvice">
+	</bean>
+
+	<!-- AOP 환경설정 -->
+	<aop:config><!-- 알아서 aop환경 만들어줌 -->
+		<aop:aspect id="aspect" ref="advice"><!-- aspect란 이름으로 advice연결. -->
+			<aop:pointcut expression="execution(public * aop2_xml.*.*Hello(..))"
+				id="pointCut" />
+			<!-- public 리턴형상관안하고 모든 놈들(*) aop2_xml는 패키지명.*는 파일명, 모든.*.Hello(..) , Hello로 끝나는 -->
+
+			<!-- Hello 뒤에 (..)은 인자가 무엇이든 상관 안하겠다. -->
+			<!-- expression에 해당하는 놈들을 id="pointCut" 포인트 것으로 지정하겠다 -->
+			<!-- 이걸 누구랑 연결하냐면 -->
+			<aop:around method="around" pointcut-ref="pointCut" />
+
+		</aop:aspect>
+	</aop:config>
+</beans>

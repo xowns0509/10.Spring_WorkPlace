@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 3. p태그 이용하여 vo객체에 값 지정 가능 -->
+	<bean id="dao2" class="sample3xml.MemberBean" p:name="홍길숙" p:age='33'
+		p:message="맛점하던가">
+		<!-- <constructor-arg> -->
+		<!-- 1. 아니면 생성자로 vo객체 값 지정 -->
+		<!-- </constructor-arg> -->
+		<!-- <property name=""> -->
+		<!-- 2. 또는 setter로 vo객체 값 지정 -->
+		<!-- </property> -->
+	</bean>
+
+	<!-- 4. p태그 이용하여 값 지정된 VO객체를 그대로 따와서 또다른 객체에 지정 가능 -->
+	<!-- p:member-ref에서 ref 빼면 에러남. 객체를 넣는 걸 명확하게 표시해야 할 듯. 그거 아니면 'dao2를 넣는다는 이야기니까' -->
+	<bean id="dao1" class="sample3xml.MemberDAO" p:member-ref="dao2">
+
+	</bean>
+</beans>

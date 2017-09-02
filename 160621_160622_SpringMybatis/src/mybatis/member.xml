@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="user">
+
+<!-- memberVO 변수명을 SqlMapConfig.xml에서 typeAlias 에서 지정한 하였음 -->
+<select id="idCheck" parameterType="memberVO" resultType="memberVO"> 
+	select * from membertemp where userid=#{userId}
+	<if test="userPass !=null">
+		AND userPass=#{userPass}
+	</if>	
+</select>
+
+<!-- 회원가입 sql -->
+<insert id="userInsert" parameterType="memberVO"> <!-- insert,delete,update는 리턴타입 필요없음 -->
+	INSERT INTO membertemp VALUES(#{userId}, #{userPass}, #{userName})
+</insert>
+<!-- userId 같은 이름들은 parameterClass의 클래스 필드 명 -->
+</mapper>

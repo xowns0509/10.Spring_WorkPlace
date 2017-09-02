@@ -1,0 +1,77 @@
+<!-- properties 파일을 읽기 -->
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations"><!-- 하나인 경우 location에다 value=""로 속성 지정, 지금은 값이 
+				여러개라 locations에다 array로. -->
+			<array>
+				<value>classpath:sample5collection/member.properties
+				</value>
+			</array>
+		</property> <!-- setter 호출 setLocation() -->
+
+	</bean>
+	<!-- ${member.age}써도되고 그냥 ${age라 써도 됨.} -->
+	<bean id="member0" class="sample5collection.MemberBean">
+		<constructor-arg value="${member.name0}" />
+		<constructor-arg value="${member.age0}" type="int" />
+		<constructor-arg value="${member.message0}" />
+
+	</bean>
+
+	<bean id="member1" class="sample5collection.MemberBean">
+		<constructor-arg value="${member.name1}" />
+		<constructor-arg value="${member.age1}" type="int" />
+		<constructor-arg value="${member.message1}" />
+
+	</bean>
+	<bean id="member2" class="sample5collection.MemberBean">
+		<constructor-arg value="${member.name2}" />
+		<constructor-arg value="${member.age2}" type="int" />
+		<constructor-arg value="${member.message2}" />
+
+	</bean>
+	<bean id="member3" class="sample5collection.MemberBean">
+		<constructor-arg value="${member.name3}" />
+		<constructor-arg value="${member.age3}" type="int" />
+		<constructor-arg value="${member.message3}" />
+
+	</bean>
+	<bean id="member4" class="sample5collection.MemberBean">
+		<constructor-arg value="${member.name4}" />
+		<constructor-arg value="${member.age4}" type="int" />
+		<constructor-arg value="${member.message4}" />
+
+	</bean>
+
+	<bean id="bean" class="sample5collection.ListBean">
+		<!-- set메소드가 호출되길 원해 -->
+		<property name="intList"></property><!-- setIntList 호출 -->
+
+		<constructor-arg name="intList">
+			<list>
+				<value>1</value>
+				<value>2</value>
+			</list>
+
+		</constructor-arg>
+
+		<constructor-arg name="memberList">
+			<list>
+				<bean id="member" class="sample5collection.MemberBean">
+					<constructor-arg value="김연재"></constructor-arg>
+					<constructor-arg value="24" type="int"></constructor-arg>
+					<constructor-arg>
+						<value>배불러</value>
+					</constructor-arg>
+				</bean>
+
+				<bean id="member" class="sample5collection.MemberBean">
+					<constructor-arg value="박재영"></constructor-arg>
+					<constructor-arg value="25" type="int"></constructor-arg>
+					<constructor-arg>
+						<value>나도 배불러</value>
+					</constructor-arg>
+				</bean>
+			</list>
+		</constructor-arg>
+	</bean>
